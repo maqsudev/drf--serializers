@@ -17,8 +17,8 @@ import os
 from pathlib import Path
 
 env = environ.Env(
-    # set casting, default value
-    DEBUG=(bool, False)
+    DEBUG=(bool, False),
+    ALLOWED_HOSTS=(list, ['localhost', '127.0.0.1', '[::1]', 'testserver'])
 )
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,20 +26,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
-SECRET_KEY = env('SECRET_KEY')
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-f#fq+rl##j2j-^2-t1w^asyh41c=q#%55%es!v)cjl8)5e)0ex'
+# See https://docs.djangoproject.com/en/5.0/topics/deployment/checklist/
+SECRET_KEY = env('SECRET_KEY', default='django-insecure-f#fq+rl##j2j-^2-t1w^asyh41c=q#%55%es!v)cjl8)5e)0ex')
 DEBUG = env('DEBUG')
 # SECURITY WARNING: don't run with debug turned on in production!
 
-
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['localhost', '127.0.0.1', '[::1]', 'testserver'])
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -128,3 +126,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = BASE_DIR / 'media'

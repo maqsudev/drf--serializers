@@ -35,6 +35,18 @@ wheels = [
 ]
 
 [[package]]
+name = "django-jazzmin"
+version = "3.0.5"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "django" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/15/e4/17cd62e80c4876088bc5f8bca24446586a62eca386c82755894408751a44/django_jazzmin-3.0.5.tar.gz", hash = "sha256:7e39b029bddbb60f3aaf9897bd009f39f8f2bdc8a7d86beed1e943706dd79692", size = 2509734, upload-time = "2026-06-25T21:05:52.699Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/23/40/892f4c922c92d0d2b8ca5f96f556c5dc04d19ea2ea717910d8bbf2dc23fc/django_jazzmin-3.0.5-py3-none-any.whl", hash = "sha256:578fb1fc0a1b7e3b8472d2692ace60b1584ccd937c3828e2c9a89bdf94067f94", size = 2581722, upload-time = "2026-06-25T21:05:50.948Z" },
+]
+
+[[package]]
 name = "djangorestframework"
 version = "3.17.2"
 source = { registry = "https://pypi.org/simple" }
@@ -53,6 +65,7 @@ source = { editable = "." }
 dependencies = [
     { name = "django" },
     { name = "django-environ" },
+    { name = "django-jazzmin" },
     { name = "djangorestframework" },
     { name = "pillow" },
     { name = "psycopg2-binary" },
@@ -62,6 +75,7 @@ dependencies = [
 requires-dist = [
     { name = "django", specifier = "==5" },
     { name = "django-environ", specifier = ">=0.14.0" },
+    { name = "django-jazzmin", specifier = ">=3.0.5" },
     { name = "djangorestframework", specifier = ">=3.17.2" },
     { name = "pillow", specifier = ">=12.3.0" },
     { name = "psycopg2-binary", specifier = ">=2.9.13" },
